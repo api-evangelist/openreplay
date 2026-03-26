@@ -1,34 +1,64 @@
 aid: openreplay
 name: OpenReplay
 description: >-
-  OpenReplay is an open source session replay and product analytics platform for debugging and understanding user behavior.
+  OpenReplay is an open source session replay and product analytics platform
+  that helps developers debug web applications by recording and replaying user
+  sessions, tracking errors, and monitoring performance.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API Analysis
   - Session Replay
+  - Debugging
+  - Open Source
+  - Performance Monitoring
+  - Error Tracking
+  - User Behavior
 url: >-
   https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-03-26'
 specificationVersion: '0.19'
 apis:
-  - aid: openreplay:openreplay
-    name: OpenReplay
+  - aid: openreplay:openreplay-api
+    name: OpenReplay API
     description: >-
-      OpenReplay is an open source session replay and product analytics platform for debugging and understanding user behavior.
+      The OpenReplay API provides programmatic access to session replay data,
+      user events, error logs, and performance metrics, enabling developers to
+      integrate session replay and analytics into their workflows.
     humanURL: https://openreplay.com
-    tags:
-      - API Analysis
-      - Session Replay
     properties:
       - type: Documentation
         url: https://docs.openreplay.com
+      - type: GettingStarted
+        url: https://docs.openreplay.com/getting-started
       - type: GitHubOrg
         url: https://github.com/openreplay/openreplay
+      - type: SDKs
+        url: https://docs.openreplay.com/sdk
+    tags:
+      - Session Replay
+      - Debugging
+      - Open Source
+      - Error Tracking
 common:
   - type: Website
     url: https://openreplay.com
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: Blog
+    url: https://blog.openreplay.com
+  - type: Pricing
+    url: https://openreplay.com/pricing
+  - type: GitHub
+    url: https://github.com/openreplay/openreplay
+  - type: Login
+    url: https://app.openreplay.com
+  - type: Signup
+    url: https://app.openreplay.com/signup
+  - type: SelfHosting
+    url: https://docs.openreplay.com/deployment
+  - type: Support
+    url: https://openreplay.com/support
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
