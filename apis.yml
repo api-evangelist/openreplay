@@ -7,11 +7,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Session Replay
   - Debugging
+  - Error Tracking
   - Open Source
   - Performance Monitoring
-  - Error Tracking
+  - Session Replay
   - User Behavior
 url: >-
   https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml
@@ -36,10 +36,10 @@ apis:
       - type: SDKs
         url: https://docs.openreplay.com/sdk
     tags:
-      - Session Replay
       - Debugging
-      - Open Source
       - Error Tracking
+      - Open Source
+      - Session Replay
 common:
   - type: Website
     url: https://openreplay.com
