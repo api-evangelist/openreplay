@@ -16,7 +16,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-03-26'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
   - aid: openreplay:openreplay-api
@@ -26,6 +26,7 @@ apis:
       user events, error logs, and performance metrics, enabling developers to
       integrate session replay and analytics into their workflows.
     humanURL: https://openreplay.com
+    baseURL: https://api.openreplay.com/v2
     properties:
       - type: Documentation
         url: https://docs.openreplay.com
@@ -35,6 +36,9 @@ apis:
         url: https://github.com/openreplay/openreplay
       - type: SDKs
         url: https://docs.openreplay.com/sdk
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/openapi/openreplay-openapi.yml
     tags:
       - Debugging
       - Error Tracking
