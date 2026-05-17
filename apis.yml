@@ -57,7 +57,7 @@ common:
     url: https://github.com/openreplay/openreplay
   - type: Login
     url: https://app.openreplay.com
-  - type: Signup
+  - type: SignUp
     url: https://app.openreplay.com/signup
   - type: SelfHosting
     url: https://docs.openreplay.com/deployment
