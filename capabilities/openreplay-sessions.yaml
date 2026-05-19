@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenReplay API — Sessions
+  description: 'OpenReplay API — Sessions. 1 operations. Lead operation: List user sessions. Self-contained Naftiko capability
+    covering one Openreplay business surface.'
+  tags:
+  - Openreplay
+  - Sessions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENREPLAY_API_KEY: OPENREPLAY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openreplay-sessions
+    baseUri: https://api.openreplay.com/v2
+    description: OpenReplay API — Sessions business capability. Self-contained, no shared references.
+    resources:
+    - name: public-projectKey-users-userId-sessions
+      path: /public/{projectKey}/users/{userId}/sessions
+      operations:
+      - name: listusersessions
+        method: POST
+        description: List user sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENREPLAY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openreplay-sessions-rest
+    port: 8080
+    description: REST adapter for OpenReplay API — Sessions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/public/{projectkey}/users/{userid}/sessions
+      name: public-projectkey-users-userid-sessions
+      description: REST surface for public-projectKey-users-userId-sessions.
+      operations:
+      - method: POST
+        name: listusersessions
+        description: List user sessions
+        call: openreplay-sessions.listusersessions
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openreplay-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenReplay API — Sessions. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-user-sessions
+      description: List user sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: openreplay-sessions.listusersessions
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
