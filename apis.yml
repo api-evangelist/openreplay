@@ -71,6 +71,8 @@ common:
   url: https://docs.openreplay.com/deployment
 - type: Support
   url: https://openreplay.com/support
+- type: LLMsTxt
+  url: https://docs.openreplay.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
