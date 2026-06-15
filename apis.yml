@@ -1,78 +1,68 @@
 aid: openreplay
 name: OpenReplay
-description: OpenReplay is an open source session replay and product analytics platform that helps developers debug web applications
-  by recording and replaying user sessions, tracking errors, and monitoring performance.
+description: >-
+  OpenReplay is an open source session replay and product analytics platform that helps developers debug web
+  applications by recording and replaying user sessions, tracking errors, and monitoring performance.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Debugging
-- Error Tracking
-- Open Source
-- Performance Monitoring
-- Session Replay
-- User Behavior
+  - Debugging
+  - Error Tracking
+  - Open Source
+  - Performance Monitoring
+  - Session Replay
+  - User Behavior
 url: https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: openreplay:openreplay-api
-  name: OpenReplay API
-  description: The OpenReplay API provides programmatic access to session replay data, user events, error logs, and performance
-    metrics, enabling developers to integrate session replay and analytics into their workflows.
-  humanURL: https://openreplay.com
-  baseURL: https://api.openreplay.com/v2
-  properties:
+  - aid: openreplay:openreplay-api
+    name: OpenReplay API
+    description: >-
+      The OpenReplay API provides programmatic access to session replay data, user events, error logs, and performance
+      metrics, enabling developers to integrate session replay and analytics into their workflows.
+    humanURL: https://openreplay.com
+    baseURL: https://api.openreplay.com/v2
+    properties:
+      - type: Documentation
+        url: https://docs.openreplay.com
+      - type: GettingStarted
+        url: https://docs.openreplay.com/getting-started
+      - type: GitHubOrg
+        url: https://github.com/openreplay/openreplay
+      - type: SDKs
+        url: https://docs.openreplay.com/sdk
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/openapi/openreplay-openapi.yml
+    tags:
+      - Debugging
+      - Error Tracking
+      - Open Source
+      - Session Replay
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/openreplay
+  - type: Website
+    url: https://openreplay.com
   - type: Documentation
     url: https://docs.openreplay.com
-  - type: GettingStarted
-    url: https://docs.openreplay.com/getting-started
-  - type: GitHubOrg
+  - type: Blog
+    url: https://blog.openreplay.com
+  - type: Pricing
+    url: https://openreplay.com/pricing
+  - type: GitHub
     url: https://github.com/openreplay/openreplay
-  - type: SDKs
-    url: https://docs.openreplay.com/sdk
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/openapi/openreplay-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-assist.yaml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-events.yaml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-jobs.yaml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-projects.yaml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-sessions.yaml
-  - type: NaftikoCapability
-    url: capabilities/openreplay-users.yaml
-  tags:
-  - Debugging
-  - Error Tracking
-  - Open Source
-  - Session Replay
-common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/openreplay
-- type: Website
-  url: https://openreplay.com
-- type: Documentation
-  url: https://docs.openreplay.com
-- type: Blog
-  url: https://blog.openreplay.com
-- type: Pricing
-  url: https://openreplay.com/pricing
-- type: GitHub
-  url: https://github.com/openreplay/openreplay
-- type: Login
-  url: https://app.openreplay.com
-- type: SignUp
-  url: https://app.openreplay.com/signup
-- type: SelfHosting
-  url: https://docs.openreplay.com/deployment
-- type: Support
-  url: https://openreplay.com/support
-- type: LLMsTxt
-  url: https://docs.openreplay.com/llms.txt
+  - type: Login
+    url: https://app.openreplay.com
+  - type: SignUp
+    url: https://app.openreplay.com/signup
+  - type: SelfHosting
+    url: https://docs.openreplay.com/deployment
+  - type: Support
+    url: https://openreplay.com/support
+  - type: LLMsTxt
+    url: https://docs.openreplay.com/llms.txt
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
