@@ -4,7 +4,7 @@ description: >-
   OpenReplay is an open source session replay and product analytics platform that helps developers debug web
   applications by recording and replaying user sessions, tracking errors, and monitoring performance.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Debugging
   - Error Tracking
