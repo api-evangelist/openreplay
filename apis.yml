@@ -55,13 +55,13 @@ common:
     url: https://github.com/openreplay/openreplay
   - type: Login
     url: https://app.openreplay.com
-  - type: SignUp
+  - type: Signup
     url: https://app.openreplay.com/signup
   - type: SelfHosting
     url: https://docs.openreplay.com/deployment
   - type: Support
     url: https://openreplay.com/support
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.openreplay.com/llms.txt
 maintainers:
   - FN: Kin Lane
