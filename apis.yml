@@ -41,6 +41,10 @@ apis:
       - Open Source
       - Session Replay
 common:
+  - type: DomainSecurity
+    url: security/openreplay-domain-security.yml
+  - type: Authentication
+    url: authentication/openreplay-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/openreplay
   - type: Website
