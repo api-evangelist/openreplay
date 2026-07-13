@@ -2,13 +2,14 @@
   "repo": "openreplay",
   "feeds": [
     {
-      "source": "https://blog.openreplay.com",
-      "feed_url": "",
-      "saved": 5,
-      "method": "agent-scrape"
+      "source": "https://docs.openreplay.com",
+      "feed_url": "https://docs.openreplay.com",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 19,
-  "fetched": "2026-06-27T12:57:49Z",
-  "agent_pulled": "2026-06-27"
+  "post_count": 25,
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
