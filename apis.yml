@@ -41,6 +41,8 @@ apis:
       - Open Source
       - Session Replay
 common:
+  - type: AgenticAccess
+    url: agentic-access/openreplay-agentic-access.yml
   - type: DomainSecurity
     url: security/openreplay-domain-security.yml
   - type: Authentication
