@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: OpenReplay Assist Sessions API
+  version: '2.0'
+  description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
+
+    sessions, events, users, background jobs, and live Assist sessions
+
+    (Enterprise Edition). All endpoints accept and return JSON, with successful
+
+    responses wrapped as `{ "data": ... }` and errors as `{ "error": "..." }`.'
+  contact:
+    name: OpenReplay
+    url: https://openreplay.com
+  license:
+    name: Elastic License 2.0
+    url: https://github.com/openreplay/openreplay/blob/dev/LICENSE
+servers:
+- url: https://api.openreplay.com/v2
+  description: OpenReplay Cloud (serverless)
+- url: https://{instance}/api/v2
+  description: OpenReplay Cloud (dedicated) or self-hosted
+  variables:
+    instance:
+      default: app.openreplay.example.com
+      description: Your OpenReplay instance domain
+security:
+- bearerAuth: []
+tags:
+- name: Sessions
+  description: Retrieve recorded sessions for a given user.
+paths:
+  /public/{projectKey}/users/{userId}/sessions:
+    post:
+      tags:
+      - Sessions
+      summary: List user sessions
+      description: Return sessions for a particular user (identified via `tracker.setUserID`). Paginated.
+      operationId: listUserSessions
+      parameters:
+      - $ref: '#/components/parameters/ProjectKey'
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionsRequest'
+      responses:
+        '200':
+          description: Matching sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  schemas:
+    Session:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
+    SessionsRequest:
+      type: object
+      required:
+      - startTimestamp
+      - endTimestamp
+      properties:
+        startTimestamp:
+          type: integer
+          format: int64
+          minimum: 946684800000
+          description: Start of time window (epoch ms).
+        endTimestamp:
+          type: integer
+          format: int64
+          description: End of time window (epoch ms); must exceed `startTimestamp`.
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+        sortOrder:
+          type: string
+          enum:
+          - asc
+          - desc
+        filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier set via `tracker.setUserID`.
+      schema:
+        type: string
+        maxLength: 256
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Organization API key from Preferences > Account > Organization API Key.

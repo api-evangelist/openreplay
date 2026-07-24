@@ -1,0 +1,147 @@
+openapi: 3.0.3
+info:
+  title: OpenReplay Assist Events API
+  version: '2.0'
+  description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
+
+    sessions, events, users, background jobs, and live Assist sessions
+
+    (Enterprise Edition). All endpoints accept and return JSON, with successful
+
+    responses wrapped as `{ "data": ... }` and errors as `{ "error": "..." }`.'
+  contact:
+    name: OpenReplay
+    url: https://openreplay.com
+  license:
+    name: Elastic License 2.0
+    url: https://github.com/openreplay/openreplay/blob/dev/LICENSE
+servers:
+- url: https://api.openreplay.com/v2
+  description: OpenReplay Cloud (serverless)
+- url: https://{instance}/api/v2
+  description: OpenReplay Cloud (dedicated) or self-hosted
+  variables:
+    instance:
+      default: app.openreplay.example.com
+      description: Your OpenReplay instance domain
+security:
+- bearerAuth: []
+tags:
+- name: Events
+  description: Retrieve events captured within a recorded session.
+paths:
+  /public/{projectKey}/sessions/{sessionId}/events:
+    post:
+      tags:
+      - Events
+      summary: List session events
+      description: Returns events (clicks, page visits, inputs, custom events, etc.) captured in a specific session.
+      operationId: listSessionEvents
+      parameters:
+      - $ref: '#/components/parameters/ProjectKey'
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+          maxLength: 256
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventsRequest'
+      responses:
+        '200':
+          description: Session events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  schemas:
+    EventListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            events:
+              type: array
+              items:
+                $ref: '#/components/schemas/Event'
+    EventsRequest:
+      type: object
+      required:
+      - startTimestamp
+      - endTimestamp
+      properties:
+        startTimestamp:
+          type: integer
+          format: int64
+        endTimestamp:
+          type: integer
+          format: int64
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+        sortBy:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - asc
+          - desc
+        filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        columns:
+          type: array
+          items:
+            type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    Event:
+      type: object
+      additionalProperties: true
+      properties:
+        type:
+          type: string
+        timestamp:
+          type: integer
+          format: int64
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Organization API key from Preferences > Account > Organization API Key.

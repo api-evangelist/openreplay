@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: OpenReplay Assist API
+  version: '2.0'
+  description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
+
+    sessions, events, users, background jobs, and live Assist sessions
+
+    (Enterprise Edition). All endpoints accept and return JSON, with successful
+
+    responses wrapped as `{ "data": ... }` and errors as `{ "error": "..." }`.'
+  contact:
+    name: OpenReplay
+    url: https://openreplay.com
+  license:
+    name: Elastic License 2.0
+    url: https://github.com/openreplay/openreplay/blob/dev/LICENSE
+servers:
+- url: https://api.openreplay.com/v2
+  description: OpenReplay Cloud (serverless)
+- url: https://{instance}/api/v2
+  description: OpenReplay Cloud (dedicated) or self-hosted
+  variables:
+    instance:
+      default: app.openreplay.example.com
+      description: Your OpenReplay instance domain
+security:
+- bearerAuth: []
+tags:
+- name: Assist
+  description: Retrieve live Assist sessions (Enterprise Edition only).
+paths:
+  /public/{projectKey}/assist/sessions:
+    parameters:
+    - $ref: '#/components/parameters/ProjectKey'
+    get:
+      tags:
+      - Assist
+      summary: List live sessions
+      description: Return live sessions for the project. Optionally filter by `userId`. Enterprise Edition only.
+      operationId: listLiveSessions
+      parameters:
+      - name: userId
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Live sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionListResponse'
+    post:
+      tags:
+      - Assist
+      summary: Search live sessions
+      description: Search live sessions using filtering, sorting, and pagination options. Enterprise Edition only.
+      operationId: searchLiveSessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionsRequest'
+      responses:
+        '200':
+          description: Matching live sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionListResponse'
+components:
+  schemas:
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
+    Session:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
+    SessionsRequest:
+      type: object
+      required:
+      - startTimestamp
+      - endTimestamp
+      properties:
+        startTimestamp:
+          type: integer
+          format: int64
+          minimum: 946684800000
+          description: Start of time window (epoch ms).
+        endTimestamp:
+          type: integer
+          format: int64
+          description: End of time window (epoch ms); must exceed `startTimestamp`.
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+        page:
+          type: integer
+          minimum: 1
+          default: 1
+        sortOrder:
+          type: string
+          enum:
+          - asc
+          - desc
+        filters:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+  parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Organization API key from Preferences > Account > Organization API Key.

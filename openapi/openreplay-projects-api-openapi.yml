@@ -1,0 +1,167 @@
+openapi: 3.0.3
+info:
+  title: OpenReplay Assist Projects API
+  version: '2.0'
+  description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
+
+    sessions, events, users, background jobs, and live Assist sessions
+
+    (Enterprise Edition). All endpoints accept and return JSON, with successful
+
+    responses wrapped as `{ "data": ... }` and errors as `{ "error": "..." }`.'
+  contact:
+    name: OpenReplay
+    url: https://openreplay.com
+  license:
+    name: Elastic License 2.0
+    url: https://github.com/openreplay/openreplay/blob/dev/LICENSE
+servers:
+- url: https://api.openreplay.com/v2
+  description: OpenReplay Cloud (serverless)
+- url: https://{instance}/api/v2
+  description: OpenReplay Cloud (dedicated) or self-hosted
+  variables:
+    instance:
+      default: app.openreplay.example.com
+      description: Your OpenReplay instance domain
+security:
+- bearerAuth: []
+tags:
+- name: Projects
+  description: Create and retrieve projects.
+paths:
+  /public/projects:
+    get:
+      tags:
+      - Projects
+      summary: List projects
+      description: Retrieve all projects belonging to the authenticated tenant.
+      operationId: listProjects
+      responses:
+        '200':
+          description: Array of projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      tags:
+      - Projects
+      summary: Create project
+      description: Create a new project for the authenticated tenant.
+      operationId: createProject
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateRequest'
+      responses:
+        '200':
+          description: Created project
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/projects/{projectKey}:
+    get:
+      tags:
+      - Projects
+      summary: Get project
+      description: Retrieve a single project by its `projectKey`.
+      operationId: getProject
+      parameters:
+      - $ref: '#/components/parameters/ProjectKey'
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Project:
+      type: object
+      properties:
+        projectId:
+          type: integer
+        projectKey:
+          type: string
+        name:
+          type: string
+        platform:
+          type: string
+          enum:
+          - web
+          - ios
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    ProjectResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Project'
+    ProjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    ProjectCreateRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        platform:
+          type: string
+          enum:
+          - web
+          - ios
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid bearer token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Organization API key from Preferences > Account > Organization API Key.

@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: OpenReplay Assist Jobs API
+  version: '2.0'
+  description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
+
+    sessions, events, users, background jobs, and live Assist sessions
+
+    (Enterprise Edition). All endpoints accept and return JSON, with successful
+
+    responses wrapped as `{ "data": ... }` and errors as `{ "error": "..." }`.'
+  contact:
+    name: OpenReplay
+    url: https://openreplay.com
+  license:
+    name: Elastic License 2.0
+    url: https://github.com/openreplay/openreplay/blob/dev/LICENSE
+servers:
+- url: https://api.openreplay.com/v2
+  description: OpenReplay Cloud (serverless)
+- url: https://{instance}/api/v2
+  description: OpenReplay Cloud (dedicated) or self-hosted
+  variables:
+    instance:
+      default: app.openreplay.example.com
+      description: Your OpenReplay instance domain
+security:
+- bearerAuth: []
+tags:
+- name: Jobs
+  description: Manage background jobs such as user-deletion tasks.
+paths:
+  /public/{projectKey}/jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List jobs
+      description: Retrieve all jobs for a project, including completed and cancelled ones. Paginated.
+      operationId: listJobs
+      parameters:
+      - $ref: '#/components/parameters/ProjectKey'
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      responses:
+        '200':
+          description: Jobs list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobListResponse'
+  /public/{projectKey}/jobs/{jobId}:
+    parameters:
+    - $ref: '#/components/parameters/ProjectKey'
+    - name: jobId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Jobs
+      summary: Get job
+      description: Return a job's status and metadata.
+      operationId: getJob
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags:
+      - Jobs
+      summary: Cancel job
+      description: Cancel a job that hasn't started yet or is still in progress.
+      operationId: cancelJob
+      responses:
+        '200':
+          description: Job cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - scheduled
+          - running
+          - completed
+          - failed
+          - cancelled
+        createdAt:
+          type: integer
+          format: int64
+    JobResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Job'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    JobListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            jobs:
+              type: array
+              items:
+                $ref: '#/components/schemas/Job'
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Organization API key from Preferences > Account > Organization API Key.
