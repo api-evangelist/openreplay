@@ -4,7 +4,20 @@ description: >-
   OpenReplay is an open source session replay and product analytics platform that helps developers debug web
   applications by recording and replaying user sessions, tracking errors, and monitoring performance.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openreplay.png
 tags:
   - Debugging
   - Error Tracking
@@ -17,29 +30,114 @@ created: '2026-03-26'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: openreplay:openreplay-api
-    name: OpenReplay API
-    description: >-
-      The OpenReplay API provides programmatic access to session replay data, user events, error logs, and performance
-      metrics, enabling developers to integrate session replay and analytics into their workflows.
-    humanURL: https://openreplay.com
-    baseURL: https://api.openreplay.com/v2
-    properties:
-      - type: Documentation
-        url: https://docs.openreplay.com
-      - type: GettingStarted
-        url: https://docs.openreplay.com/getting-started
-      - type: GitHubOrg
-        url: https://github.com/openreplay/openreplay
-      - type: SDKs
-        url: https://docs.openreplay.com/sdk
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/openapi/openreplay-openapi.yml
-    tags:
-      - Debugging
-      - Error Tracking
-      - Open Source
-      - Session Replay
+- aid: openreplay:openreplay-assist-api
+  name: OpenReplay Assist API
+  description: Retrieve live Assist sessions (Enterprise Edition only).
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Assist
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-assist-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
+- aid: openreplay:openreplay-events-api
+  name: OpenReplay Events API
+  description: Retrieve events captured within a recorded session.
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
+- aid: openreplay:openreplay-jobs-api
+  name: OpenReplay Jobs API
+  description: Manage background jobs such as user-deletion tasks.
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
+- aid: openreplay:openreplay-projects-api
+  name: OpenReplay Projects API
+  description: Create and retrieve projects.
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
+- aid: openreplay:openreplay-sessions-api
+  name: OpenReplay Sessions API
+  description: Retrieve recorded sessions for a given user.
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
+- aid: openreplay:openreplay-users-api
+  name: OpenReplay Users API
+  description: Search, retrieve, and delete users and their associated data.
+  humanURL: https://openreplay.com
+  baseURL: https://api.openreplay.com/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/openreplay-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.openreplay.com
+  - type: GettingStarted
+    url: https://docs.openreplay.com/getting-started
+  - type: GitHubOrg
+    url: https://github.com/openreplay/openreplay
+  - type: SDKs
+    url: https://docs.openreplay.com/sdk
 common:
   - type: AgenticAccess
     url: agentic-access/openreplay-agentic-access.yml
