@@ -1,0 +1,24 @@
+{
+  "provider": "openreplay",
+  "sources": [
+    "openreplay-assist-api-openapi.yml",
+    "openreplay-events-api-openapi.yml",
+    "openreplay-jobs-api-openapi.yml",
+    "openreplay-projects-api-openapi.yml",
+    "openreplay-sessions-api-openapi.yml",
+    "openreplay-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "openreplay-assist-api-openapi.yml",
+    "openreplay-events-api-openapi.yml",
+    "openreplay-jobs-api-openapi.yml",
+    "openreplay-projects-api-openapi.yml",
+    "openreplay-sessions-api-openapi.yml",
+    "openreplay-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
