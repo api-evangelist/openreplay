@@ -1,0 +1,273 @@
+{
+  "item": [
+    {
+      "id": "9cc44f54-2482-4aaa-85f1-53e25d72da60",
+      "name": "Assist",
+      "description": {
+        "content": "Retrieve live Assist sessions (Enterprise Edition only).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7daf46f4-159a-43cd-aa9e-65b1decfbb03",
+          "name": "List live sessions",
+          "request": {
+            "name": "List live sessions",
+            "description": {
+              "content": "Return live sessions for the project. Optionally filter by `userId`. Enterprise Edition only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                ":projectKey",
+                "assist",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectKey",
+                  "description": "(Required) Unique project key."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f00984f3-d418-4a90-ba28-c9c6a796de21",
+              "name": "Live sessions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    ":projectKey",
+                    "assist",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectKey",
+                      "description": "(Required) Unique project key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"total\": 8331,\n    \"sessions\": [\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 6449,\n        \"startTs\": 9432,\n        \"endTs\": 5688\n      },\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 794,\n        \"startTs\": 6119,\n        \"endTs\": 2455\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dacada6-68f5-4d99-a348-32ed6cd3049d",
+          "name": "Search live sessions",
+          "request": {
+            "name": "Search live sessions",
+            "description": {
+              "content": "Search live sessions using filtering, sorting, and pagination options. Enterprise Edition only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                ":projectKey",
+                "assist",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectKey",
+                  "description": "(Required) Unique project key."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTimestamp\": \"<long>\",\n  \"endTimestamp\": \"<long>\",\n  \"limit\": 50,\n  \"page\": 1,\n  \"sortOrder\": \"<string>\",\n  \"filters\": [\n    {\n      \"key_0\": 3734.656519914271,\n      \"key_1\": 2115.7828954125944\n    },\n    {\n      \"key_0\": true\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f71c3a5-521a-44fb-90cf-89cff9081ffa",
+              "name": "Matching live sessions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    ":projectKey",
+                    "assist",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectKey",
+                      "description": "(Required) Unique project key."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTimestamp\": \"<long>\",\n  \"endTimestamp\": \"<long>\",\n  \"limit\": 50,\n  \"page\": 1,\n  \"sortOrder\": \"<string>\",\n  \"filters\": [\n    {\n      \"key_0\": 866.7061450015257,\n      \"key_1\": true,\n      \"key_2\": 8670\n    },\n    {\n      \"key_0\": 2454,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"total\": 8511,\n    \"sessions\": [\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 5646,\n        \"startTs\": 5196,\n        \"endTs\": 8763\n      },\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 2058,\n        \"startTs\": 8320,\n        \"endTs\": 3317\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openreplay.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51ec63b6-b86b-4aa5-a110-047c849877fa",
+    "name": "OpenReplay Assist API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenReplay Public REST API (v2) provides programmatic access to projects,\nsessions, events, users, background jobs, and live Assist sessions\n(Enterprise Edition). All endpoints accept and return JSON, with successful\nresponses wrapped as `{ \"data\": ... }` and errors as `{ \"error\": \"...\" }`.\n\nContact Support:\n Name: OpenReplay",
+      "type": "text/plain"
+    }
+  }
+}

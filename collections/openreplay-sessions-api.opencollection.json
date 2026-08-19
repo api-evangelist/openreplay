@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenReplay Assist Sessions API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List user sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/users/:userId/sessions",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier set via `tracker.setUserID`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return sessions for a particular user (identified via `tracker.setUserID`). Paginated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenReplay Assist Users API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/users",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Filter users by attributes (id, email, country, etc.) and paginate the results."
+        },
+        {
+          "info": {
+            "name": "Get user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/users/:userId",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier set via `tracker.setUserID`."
+              }
+            ]
+          },
+          "docs": "Retrieve identity attributes and aggregate statistics for a single user."
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/users/:userId",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier set via `tracker.setUserID`."
+              }
+            ]
+          },
+          "docs": "Schedule a background job to delete a user and all of their associated data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenReplay Assist API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assist",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List live sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/assist/sessions",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return live sessions for the project. Optionally filter by `userId`. Enterprise Edition only."
+        },
+        {
+          "info": {
+            "name": "Search live sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openreplay.com/v2/public/:projectKey/assist/sessions",
+            "params": [
+              {
+                "name": "projectKey",
+                "value": "",
+                "type": "path",
+                "description": "Unique project key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search live sessions using filtering, sorting, and pagination options. Enterprise Edition only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

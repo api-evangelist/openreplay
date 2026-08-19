@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "f28cf686-0921-4f3d-8bd5-acd8fcb24f05",
+      "name": "Sessions",
+      "description": {
+        "content": "Retrieve recorded sessions for a given user.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aae587ef-16d5-45e1-8586-b21aa2eaa9a4",
+          "name": "List user sessions",
+          "request": {
+            "name": "List user sessions",
+            "description": {
+              "content": "Return sessions for a particular user (identified via `tracker.setUserID`). Paginated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                ":projectKey",
+                "users",
+                ":userId",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectKey",
+                  "description": "(Required) Unique project key."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier set via `tracker.setUserID`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTimestamp\": \"<long>\",\n  \"endTimestamp\": \"<long>\",\n  \"limit\": 50,\n  \"page\": 1,\n  \"sortOrder\": \"<string>\",\n  \"filters\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98b2c910-75c4-443c-bc39-87377fcd8340",
+              "name": "Matching sessions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    ":projectKey",
+                    "users",
+                    ":userId",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectKey",
+                      "description": "(Required) Unique project key."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier set via `tracker.setUserID`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTimestamp\": \"<long>\",\n  \"endTimestamp\": \"<long>\",\n  \"limit\": 50,\n  \"page\": 1,\n  \"sortOrder\": \"<string>\",\n  \"filters\": [\n    {\n      \"key_0\": 9408,\n      \"key_1\": 9177.746589038336\n    },\n    {\n      \"key_0\": 3863.4340967678727,\n      \"key_1\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"total\": 7269,\n    \"sessions\": [\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 7791,\n        \"startTs\": 4423,\n        \"endTs\": 2585\n      },\n      {\n        \"sessionId\": \"string\",\n        \"eventsCount\": 8693,\n        \"startTs\": 5353,\n        \"endTs\": 3901\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01e6f71d-6206-4696-b04a-49b3f3b613e5",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    ":projectKey",
+                    "users",
+                    ":userId",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectKey",
+                      "description": "(Required) Unique project key."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier set via `tracker.setUserID`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTimestamp\": \"<long>\",\n  \"endTimestamp\": \"<long>\",\n  \"limit\": 50,\n  \"page\": 1,\n  \"sortOrder\": \"<string>\",\n  \"filters\": [\n    {\n      \"key_0\": 9408,\n      \"key_1\": 9177.746589038336\n    },\n    {\n      \"key_0\": 3863.4340967678727,\n      \"key_1\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openreplay.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0fa62284-83de-4d8a-af0c-aeaa91f1cd81",
+    "name": "OpenReplay Assist Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenReplay Public REST API (v2) provides programmatic access to projects,\nsessions, events, users, background jobs, and live Assist sessions\n(Enterprise Edition). All endpoints accept and return JSON, with successful\nresponses wrapped as `{ \"data\": ... }` and errors as `{ \"error\": \"...\" }`.\n\nContact Support:\n Name: OpenReplay",
+      "type": "text/plain"
+    }
+  }
+}
