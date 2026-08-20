@@ -21,6 +21,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openreplay
 tags:
   - Debugging
   - Error Tracking
+  - Open-Source
+  - Performance Monitoring
+  - Session Replay
+  - User Behavior
+tags_raw:
+  - Debugging
+  - Error Tracking
   - Open Source
   - Performance Monitoring
   - Session Replay
@@ -54,6 +61,8 @@ apis:
   humanURL: https://openreplay.com
   baseURL: https://api.openreplay.com/v2
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -72,6 +81,8 @@ apis:
   humanURL: https://openreplay.com
   baseURL: https://api.openreplay.com/v2
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -90,6 +101,8 @@ apis:
   humanURL: https://openreplay.com
   baseURL: https://api.openreplay.com/v2
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -126,6 +139,8 @@ apis:
   humanURL: https://openreplay.com
   baseURL: https://api.openreplay.com/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
