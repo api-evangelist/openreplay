@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OpenReplay Assist Sessions API
+  title: OpenReplay Sessions API
   version: '2.0'
   description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
 
@@ -70,6 +70,18 @@ components:
         endTs:
           type: integer
           format: int64
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
     SessionsRequest:
       type: object
       required:
@@ -109,19 +121,21 @@ components:
       properties:
         error:
           type: string
-    SessionListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            sessions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Session'
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
     UserId:
       name: userId
       in: path
@@ -130,20 +144,6 @@ components:
       schema:
         type: string
         maxLength: 256
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: Invalid input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

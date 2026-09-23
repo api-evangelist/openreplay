@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: OpenReplay Assist API
   version: '2.0'
@@ -72,31 +72,6 @@ paths:
                 $ref: '#/components/schemas/SessionListResponse'
 components:
   schemas:
-    SessionListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            sessions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Session'
-    Session:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        eventsCount:
-          type: integer
-        startTs:
-          type: integer
-          format: int64
-        endTs:
-          type: integer
-          format: int64
     SessionsRequest:
       type: object
       required:
@@ -131,6 +106,31 @@ components:
           items:
             type: object
             additionalProperties: true
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
+    Session:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
   parameters:
     ProjectKey:
       name: projectKey

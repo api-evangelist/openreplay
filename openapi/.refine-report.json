@@ -1,12 +1,7 @@
 {
   "provider": "openreplay",
   "sources": [
-    "openreplay-assist-api-openapi.yml",
-    "openreplay-events-api-openapi.yml",
-    "openreplay-jobs-api-openapi.yml",
-    "openreplay-projects-api-openapi.yml",
-    "openreplay-sessions-api-openapi.yml",
-    "openreplay-users-api-openapi.yml"
+    "_original/openreplay-openapi.yml"
   ],
   "outputs": [
     "openreplay-assist-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openreplay-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "openreplay-assist-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openreplay-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openreplay-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openreplay-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openreplay-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openreplay-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

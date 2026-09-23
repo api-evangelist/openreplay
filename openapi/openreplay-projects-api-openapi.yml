@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OpenReplay Assist Projects API
+  title: OpenReplay Projects API
   version: '2.0'
   description: 'The OpenReplay Public REST API (v2) provides programmatic access to projects,
 
@@ -103,23 +103,6 @@ components:
           enum:
           - web
           - ios
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-    ProjectResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Project'
-    ProjectListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
     ProjectCreateRequest:
       type: object
       required:
@@ -133,6 +116,23 @@ components:
           enum:
           - web
           - ios
+    ProjectResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Project'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    ProjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
   responses:
     NotFound:
       description: Resource not found
