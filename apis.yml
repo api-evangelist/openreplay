@@ -5,16 +5,21 @@ description: >-
   applications by recording and replaying user sessions, tracking errors, and monitoring performance.
 type: Index
 deliveryModel:
-  model: saas
-  open_source: false
+  model: unknown
+  license_evidence:
+    repo: openreplay/openreplay
+    spdx: NOASSERTION
+    stars: 12899
+  open_source: unknown
   commercial: true
   callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-unlicensed
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -34,7 +39,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openreplay
 tags:
   - Debugging
   - Error Tracking
-  - Open-Source
+  - Open Source
   - Performance Monitoring
   - Session Replay
   - User Behavior
@@ -45,6 +50,7 @@ tags_raw:
   - Performance Monitoring
   - Session Replay
   - User Behavior
+  - Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-05-19'

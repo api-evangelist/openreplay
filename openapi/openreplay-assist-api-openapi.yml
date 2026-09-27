@@ -72,6 +72,19 @@ paths:
                 $ref: '#/components/schemas/SessionListResponse'
 components:
   schemas:
+    Session:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
     SessionsRequest:
       type: object
       required:
@@ -118,19 +131,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Session'
-    Session:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        eventsCount:
-          type: integer
-        startTs:
-          type: integer
-          format: int64
-        endTs:
-          type: integer
-          format: int64
   parameters:
     ProjectKey:
       name: projectKey

@@ -99,18 +99,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    JobListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            jobs:
-              type: array
-              items:
-                $ref: '#/components/schemas/Job'
     Job:
       type: object
       properties:
@@ -137,6 +125,18 @@ components:
       properties:
         error:
           type: string
+    JobListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            jobs:
+              type: array
+              items:
+                $ref: '#/components/schemas/Job'
   responses:
     NotFound:
       description: Resource not found

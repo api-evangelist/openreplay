@@ -62,15 +62,11 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
-    Event:
+    Error:
       type: object
-      additionalProperties: true
       properties:
-        type:
+        error:
           type: string
-        timestamp:
-          type: integer
-          format: int64
     EventListResponse:
       type: object
       properties:
@@ -83,6 +79,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      additionalProperties: true
+      properties:
+        type:
+          type: string
+        timestamp:
+          type: integer
+          format: int64
     EventsRequest:
       type: object
       required:
@@ -120,11 +125,6 @@ components:
           type: array
           items:
             type: string
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
   responses:
     BadRequest:
       description: Invalid input

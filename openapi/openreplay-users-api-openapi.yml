@@ -106,16 +106,6 @@ components:
         createdAt:
           type: integer
           format: int64
-    JobResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Job'
-    UserResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
     UserListResponse:
       type: object
       properties:
@@ -128,6 +118,33 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
+    JobResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Job'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    UserResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    User:
+      type: object
+      additionalProperties: true
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        sessionsCount:
+          type: integer
     UserSearchRequest:
       type: object
       properties:
@@ -147,23 +164,6 @@ components:
           type: integer
           minimum: 1
           default: 1
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-    User:
-      type: object
-      additionalProperties: true
-      properties:
-        userId:
-          type: string
-        email:
-          type: string
-        country:
-          type: string
-        sessionsCount:
-          type: integer
   responses:
     NotFound:
       description: Resource not found

@@ -70,6 +70,11 @@ components:
         endTs:
           type: integer
           format: int64
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
     SessionListResponse:
       type: object
       properties:
@@ -116,26 +121,7 @@ components:
           items:
             type: object
             additionalProperties: true
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-  responses:
-    BadRequest:
-      description: Invalid input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
     UserId:
       name: userId
       in: path
@@ -144,6 +130,20 @@ components:
       schema:
         type: string
         maxLength: 256
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
