@@ -90,49 +90,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Job:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          type: string
-          enum:
-          - scheduled
-          - running
-          - completed
-          - failed
-          - cancelled
-        createdAt:
-          type: integer
-          format: int64
-    UserListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            users:
-              type: array
-              items:
-                $ref: '#/components/schemas/User'
-    JobResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Job'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-    UserResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
     User:
       type: object
       additionalProperties: true
@@ -145,6 +102,11 @@ components:
           type: string
         sessionsCount:
           type: integer
+    JobResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Job'
     UserSearchRequest:
       type: object
       properties:
@@ -164,6 +126,44 @@ components:
           type: integer
           minimum: 1
           default: 1
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    UserListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            users:
+              type: array
+              items:
+                $ref: '#/components/schemas/User'
+    UserResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - scheduled
+          - running
+          - completed
+          - failed
+          - cancelled
+        createdAt:
+          type: integer
+          format: int64
   responses:
     NotFound:
       description: Resource not found

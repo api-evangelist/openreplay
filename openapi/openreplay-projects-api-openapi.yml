@@ -88,6 +88,51 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  schemas:
+    ProjectCreateRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 200
+        platform:
+          type: string
+          enum:
+          - web
+          - ios
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+    ProjectResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Project'
+    Project:
+      type: object
+      properties:
+        projectId:
+          type: integer
+        projectKey:
+          type: string
+        name:
+          type: string
+        platform:
+          type: string
+          enum:
+          - web
+          - ios
+    ProjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
   responses:
     NotFound:
       description: Resource not found
@@ -107,51 +152,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  schemas:
-    Project:
-      type: object
-      properties:
-        projectId:
-          type: integer
-        projectKey:
-          type: string
-        name:
-          type: string
-        platform:
-          type: string
-          enum:
-          - web
-          - ios
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-    ProjectListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-    ProjectCreateRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 200
-        platform:
-          type: string
-          enum:
-          - web
-          - ios
-    ProjectResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Project'
   parameters:
     ProjectKey:
       name: projectKey

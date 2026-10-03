@@ -85,6 +85,18 @@ components:
         endTs:
           type: integer
           format: int64
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
     SessionsRequest:
       type: object
       required:
@@ -119,18 +131,6 @@ components:
           items:
             type: object
             additionalProperties: true
-    SessionListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            sessions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Session'
   parameters:
     ProjectKey:
       name: projectKey

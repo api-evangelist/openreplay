@@ -99,22 +99,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Job:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          type: string
-          enum:
-          - scheduled
-          - running
-          - completed
-          - failed
-          - cancelled
-        createdAt:
-          type: integer
-          format: int64
     JobResponse:
       type: object
       properties:
@@ -137,6 +121,22 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Job'
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - scheduled
+          - running
+          - completed
+          - failed
+          - cancelled
+        createdAt:
+          type: integer
+          format: int64
   responses:
     NotFound:
       description: Resource not found

@@ -57,24 +57,6 @@ paths:
           $ref: '#/components/responses/BadRequest'
 components:
   schemas:
-    Session:
-      type: object
-      properties:
-        sessionId:
-          type: string
-        eventsCount:
-          type: integer
-        startTs:
-          type: integer
-          format: int64
-        endTs:
-          type: integer
-          format: int64
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
     SessionListResponse:
       type: object
       properties:
@@ -121,7 +103,32 @@ components:
           items:
             type: object
             additionalProperties: true
+    Session:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
   parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
     UserId:
       name: userId
       in: path
@@ -130,13 +137,6 @@ components:
       schema:
         type: string
         maxLength: 256
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
   responses:
     BadRequest:
       description: Invalid input
