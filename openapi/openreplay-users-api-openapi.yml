@@ -89,6 +89,22 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
+    UserId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier set via `tracker.setUserID`.
+      schema:
+        type: string
+        maxLength: 256
   schemas:
     User:
       type: object
@@ -102,11 +118,6 @@ components:
           type: string
         sessionsCount:
           type: integer
-    JobResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Job'
     UserSearchRequest:
       type: object
       properties:
@@ -126,11 +137,11 @@ components:
           type: integer
           minimum: 1
           default: 1
-    Error:
+    JobResponse:
       type: object
       properties:
-        error:
-          type: string
+        data:
+          $ref: '#/components/schemas/Job'
     UserListResponse:
       type: object
       properties:
@@ -143,11 +154,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
-    UserResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/User'
     Job:
       type: object
       properties:
@@ -164,35 +170,29 @@ components:
         createdAt:
           type: integer
           format: int64
+    UserResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Invalid input
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
-    UserId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier set via `tracker.setUserID`.
-      schema:
-        type: string
-        maxLength: 256
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

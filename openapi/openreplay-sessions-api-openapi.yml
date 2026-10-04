@@ -56,19 +56,36 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 components:
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier set via `tracker.setUserID`.
+      schema:
+        type: string
+        maxLength: 256
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
   schemas:
-    SessionListResponse:
+    Session:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            sessions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Session'
+        sessionId:
+          type: string
+        eventsCount:
+          type: integer
+        startTs:
+          type: integer
+          format: int64
+        endTs:
+          type: integer
+          format: int64
     SessionsRequest:
       type: object
       required:
@@ -103,40 +120,23 @@ components:
           items:
             type: object
             additionalProperties: true
-    Session:
+    SessionListResponse:
       type: object
       properties:
-        sessionId:
-          type: string
-        eventsCount:
-          type: integer
-        startTs:
-          type: integer
-          format: int64
-        endTs:
-          type: integer
-          format: int64
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
     Error:
       type: object
       properties:
         error:
           type: string
-  parameters:
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
-    UserId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier set via `tracker.setUserID`.
-      schema:
-        type: string
-        maxLength: 256
   responses:
     BadRequest:
       description: Invalid input
