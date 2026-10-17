@@ -89,6 +89,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Missing or invalid bearer token
       content:
@@ -101,20 +107,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Invalid input
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    ProjectListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
     ProjectCreateRequest:
       type: object
       required:
@@ -128,6 +121,18 @@ components:
           enum:
           - web
           - ios
+    ProjectListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
     Project:
       type: object
       properties:
@@ -147,11 +152,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/Project'
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
   parameters:
     ProjectKey:
       name: projectKey

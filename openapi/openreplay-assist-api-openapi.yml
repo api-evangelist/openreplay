@@ -72,6 +72,18 @@ paths:
                 $ref: '#/components/schemas/SessionListResponse'
 components:
   schemas:
+    SessionListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            total:
+              type: integer
+            sessions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Session'
     Session:
       type: object
       properties:
@@ -119,18 +131,6 @@ components:
           items:
             type: object
             additionalProperties: true
-    SessionListResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            total:
-              type: integer
-            sessions:
-              type: array
-              items:
-                $ref: '#/components/schemas/Session'
   parameters:
     ProjectKey:
       name: projectKey

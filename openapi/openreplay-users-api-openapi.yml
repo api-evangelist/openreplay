@@ -89,23 +89,23 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ProjectKey:
-      name: projectKey
-      in: path
-      required: true
-      description: Unique project key.
-      schema:
-        type: string
-    UserId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier set via `tracker.setUserID`.
-      schema:
-        type: string
-        maxLength: 256
   schemas:
+    Job:
+      type: object
+      properties:
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - scheduled
+          - running
+          - completed
+          - failed
+          - cancelled
+        createdAt:
+          type: integer
+          format: int64
     User:
       type: object
       additionalProperties: true
@@ -137,11 +137,11 @@ components:
           type: integer
           minimum: 1
           default: 1
-    JobResponse:
+    Error:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Job'
+        error:
+          type: string
     UserListResponse:
       type: object
       properties:
@@ -154,32 +154,16 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/User'
-    Job:
-      type: object
-      properties:
-        jobId:
-          type: string
-        status:
-          type: string
-          enum:
-          - scheduled
-          - running
-          - completed
-          - failed
-          - cancelled
-        createdAt:
-          type: integer
-          format: int64
     UserResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/User'
-    Error:
+    JobResponse:
       type: object
       properties:
-        error:
-          type: string
+        data:
+          $ref: '#/components/schemas/Job'
   responses:
     BadRequest:
       description: Invalid input
@@ -193,6 +177,22 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    UserId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier set via `tracker.setUserID`.
+      schema:
+        type: string
+        maxLength: 256
+    ProjectKey:
+      name: projectKey
+      in: path
+      required: true
+      description: Unique project key.
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

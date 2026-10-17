@@ -99,11 +99,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    JobResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Job'
     Job:
       type: object
       properties:
@@ -137,13 +132,11 @@ components:
       properties:
         error:
           type: string
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    JobResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Job'
   parameters:
     ProjectKey:
       name: projectKey
@@ -152,6 +145,13 @@ components:
       description: Unique project key.
       schema:
         type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
