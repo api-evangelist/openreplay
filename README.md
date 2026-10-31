@@ -1,4 +1,4 @@
-# OpenReplay (openreplay)
+# OpenReplay
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,67 +66,127 @@
 
 OpenReplay is an open source session replay and product analytics platform that helps developers debug web applications by recording and replaying user sessions, tracking errors, and monitoring performance.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/apis.yml)
+**Areas:** Debugging · Error Tracking · Open Source · Performance Monitoring · Session Replay · User Behavior
 
-## Scope
+## OpenReplay on APIs.io
 
-- **Type:** Index
+Everything profiled for OpenReplay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openreplay/](https://apis.io/providers/openreplay/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- Debugging
-- Error Tracking
-- Open Source
-- Performance Monitoring
-- Session Replay
-- User Behavior
+- [OpenReplay Assist API](https://apis.io/apis/openreplay/openreplay-assist-api/) — Retrieve live Assist sessions (Enterprise Edition only).
+- [OpenReplay Events API](https://apis.io/apis/openreplay/openreplay-events-api/) — Retrieve events captured within a recorded session.
+- [OpenReplay Jobs API](https://apis.io/apis/openreplay/openreplay-jobs-api/) — Manage background jobs such as user-deletion tasks.
+- [OpenReplay Projects API](https://apis.io/apis/openreplay/openreplay-projects-api/) — Create and retrieve projects.
+- [OpenReplay Sessions API](https://apis.io/apis/openreplay/openreplay-sessions-api/) — Retrieve recorded sessions for a given user.
+- [OpenReplay Users API](https://apis.io/apis/openreplay/openreplay-users-api/) — Search, retrieve, and delete users and their associated data.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-26
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### OpenReplay API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The OpenReplay API provides programmatic access to session replay data, user events, error logs, and performance metrics, enabling developers to integrate session replay and analytics into their workflows.
+- [Openreplay Agentic Access](https://apis.io/agentic-access/openreplay/openreplay-agentic-access/)
 
-- **Human URL:** [https://openreplay.com](https://openreplay.com)
-- **Base URL:** `https://api.openreplay.com/v2`
+#### Collections (7)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Debugging
-- Error Tracking
-- Open Source
-- Session Replay
+- [OpenReplay API](https://apis.io/collections/openreplay/open-openreplay/)
+- [OpenReplay Assist API](https://apis.io/collections/openreplay/open-openreplay-assist-api/)
+- [OpenReplay Assist Events API](https://apis.io/collections/openreplay/open-openreplay-events-api/)
+- [OpenReplay Assist Jobs API](https://apis.io/collections/openreplay/open-openreplay-jobs-api/)
+- [OpenReplay Assist Projects API](https://apis.io/collections/openreplay/open-openreplay-projects-api/)
+- [OpenReplay Assist Sessions API](https://apis.io/collections/openreplay/open-openreplay-sessions-api/)
+- [OpenReplay Assist Users API](https://apis.io/collections/openreplay/open-openreplay-users-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://docs.openreplay.com)
-- [Getting Started](https://docs.openreplay.com/getting-started)
-- [Git Hub Org](https://github.com/openreplay/openreplay)
-- [S D Ks](https://docs.openreplay.com/sdk)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/openreplay/refs/heads/main/openapi/openreplay-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openreplay.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openreplay.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Openreplay Authentication](https://apis.io/security/openreplay/openreplay-authentication/)
+- [Openreplay Domain Security](https://apis.io/security/openreplay/openreplay-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/openreplay)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Openreplay Plans Pricing](https://apis.io/plans/openreplay/openreplay-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Openreplay Rate Limits](https://apis.io/rate-limits/openreplay/openreplay-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Openreplay Finops](https://apis.io/finops/openreplay/openreplay-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://openreplay.com)
 - [Documentation](https://docs.openreplay.com)
-- [Blog](https://blog.openreplay.com)
 - [Pricing](https://openreplay.com/pricing)
-- [Git Hub](https://github.com/openreplay/openreplay)
-- [Login](https://app.openreplay.com)
-- [Sign Up](https://app.openreplay.com/signup)
-- [Self Hosting](https://docs.openreplay.com/deployment)
 - [Support](https://openreplay.com/support)
-- [L L Ms Txt](https://docs.openreplay.com/llms.txt)
+- [Blog](https://blog.openreplay.com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 50.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 25.0 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openreplay/](https://apis.io/providers/openreplay/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenReplay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openreplay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
